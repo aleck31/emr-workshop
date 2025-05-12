@@ -17,6 +17,7 @@ node_modules
 .vscode
 .idea
 .DS_Store
+dev_guide*
 
 # Environments
 .env
