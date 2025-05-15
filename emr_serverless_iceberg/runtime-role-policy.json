@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:GetEncryptionConfiguration",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*.elasticmapreduce",
+                "arn:aws:s3:::*.elasticmapreduce/*",
+                "arn:aws:s3:::datalake-123456789012-eu-west-2",
+                "arn:aws:s3:::datalake-123456789012-eu-west-2/*",
+                "arn:aws:s3:::datalake-resources-123456789012-eu-west-2",
+                "arn:aws:s3:::datalake-resources-123456789012-eu-west-2/*"
+            ],
+            "Effect": "Allow",
+            "Sid": "ReadAccessForEMR"
+        },
+        {
+            "Action": [
+                "glue:*Database*",
+                "glue:*Table*",
+                "glue:*Partition*"
+            ],
+            "Resource": [
+                "arn:aws:glue:eu-west-2:123456789012:catalog",
+                "arn:aws:glue:eu-west-2:123456789012:database/test_db_0515",
+                "arn:aws:glue:eu-west-2:123456789012:table/test_db_0515/*"
+            ],
+            "Effect": "Allow",
+            "Sid": "AllowGlueCatalog"
+        }
+    ]
+}
